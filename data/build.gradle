@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        buildConfigField "String", "API_KEY", '"1883abde50d0ebf425e5047655c47d99"'
+        buildConfigField "String", "URL", '"http://api.openweathermap.org/data/2.5/"'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    realm {
+        syncEnabled = true;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+}
+repositories {
+    mavenCentral()
+}
